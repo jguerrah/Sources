@@ -28,4 +28,4 @@ The book is kind of informal, so notes will be just listed as bullets
 
 > The holder of a **long position in a European call option** on the underlying asset A with expiration date T and strike price K receives payment of a **payoff** at time T of **max (S (T) − K, 0)**. Since that holder initially purchased the option at the price C(t), the **profit (loss) from the option position is max (S (T) − K, 0) − C(t)**
 
-![Payoff and profit function of a long call option](/Python/fig.2.1.png "Payoff and profit function of a long call option") {align=center}
+![Payoff and profit function of a long call option](Python/fig.2.1.png "Payoff and profit function of a long call option")
