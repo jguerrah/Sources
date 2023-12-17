@@ -26,6 +26,13 @@ The book is kind of informal, so notes will be just listed as bullets
 
 #### Long European call
 
-> The holder of a **long position in a European call option** on the underlying asset A with expiration date T and strike price K receives payment of a **payoff** at time T of **max (S (T) − K, 0)**. Since that holder initially purchased the option at the price C(t), the **profit (loss) from the option position is max (S (T) − K, 0) − C(t)**
+> The holder of a **long position in a European call option** on the underlying asset A with expiration date T and strike price K receives payment of a **payoff** at time T of **max (S (T) − K, 0)**. Since that holder initially purchased the option at the price C(t), the **profit (loss) from the option position is max(S(T) − K, 0) − C(t)**
 
 ![Payoff and profit function of a long call option](Python/fig.2.1.png "Payoff and profit function of a long call option")
+
+#### Short European call
+
+> The holder of a **short position in a European call option** on the underlying asset A with expiration date T and strike price K has to pay out a **payoff** at time T of **max (S (T) − K, 0)**. Since that holder initially was paid the option price C(t), the **profit (loss) from the option position is -max(S(T) − K, 0) + C(t)**
+
+![Payoff and profit function of a short call option](Python/fig.2.2.png "Payoff and profit function of a short call option")
+
