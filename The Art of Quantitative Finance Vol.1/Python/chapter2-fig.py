@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+plt.rcParams['figure.figsize'] = (6, 4)
+
 K = 100
 [Ct, Pt] = [10]*2
 ST = np.linspace(0, 250, 100)
@@ -16,7 +18,7 @@ ax.plot(ST, profit, color='green')
 ax.set_xlim([np.min(ST), np.max(ST)])
 ax.set_yticks([-Ct, 0, np.max(payoff)], labels=['-C(t)', 0.0, np.max(payoff)])
 ax.axhline(0, color='gray', linewidth=0.5)
-plt.savefig('fig.2.1.png')
+plt.savefig('img/fig.2.1.png')
 
 
 # Fig. 2.2 Payoff and profit graph of a short call option
@@ -30,7 +32,7 @@ ax.plot(ST, -profit, color='green')
 ax.set_xlim([np.min(ST), np.max(ST)])
 ax.set_yticks([Ct, 0, np.min(-payoff)], labels=['C(t)', 0.0, np.min(-payoff)])
 ax.axhline(0, color='gray', linewidth=0.5)
-plt.savefig('fig.2.2.png')
+plt.savefig('img/fig.2.2.png')
 
 
 # Fig. 2.3 Payoff and profit graph of a long put option
@@ -44,7 +46,7 @@ ax.plot(ST, profit, color='green')
 ax.set_xlim([np.min(ST), np.max(ST)])
 ax.set_yticks([-Pt, 0, np.max(payoff)], labels=['-P(t)', 0.0, np.max(payoff)])
 ax.axhline(0, color='gray', linewidth=0.5)
-plt.savefig('fig.2.3.png')
+plt.savefig('img/fig.2.3.png')
 
 
 # Fig. 2.4 Payoff and profit function of a short put option
@@ -58,4 +60,5 @@ ax.plot(ST, -profit, color='green')
 ax.set_xlim([np.min(ST), np.max(ST)])
 ax.set_yticks([Pt, 0, np.min(-payoff)], labels=['P(t)', 0.0, np.min(-payoff)])
 ax.axhline(0, color='gray', linewidth=0.5)
-plt.savefig('fig.2.4.png')
+plt.savefig('img/fig.2.4.png')
+
