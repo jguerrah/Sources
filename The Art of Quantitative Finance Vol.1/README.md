@@ -50,10 +50,30 @@ The book is kind of informal, so notes will be just listed as bullets
 
 ### 2.4. Any Strategy Is Better than No Strategy and “The Secretary Problem”
 
-Simple game with 2 players and 2 options (beginner's version):
-- Player A writes (in secret) 2 different numbers ($Z_1$ and $Z_2$) in Note 1 and Note 2
-- Player B is shown Note 1 ($Z_1$), and Note 2 ($Z_2$) remains hidden. Player B has to pick a note
-- **Winner** is the player with the bigger number on their note
+- The idea of this section is to *show* that having a strategy is better than not having one. The games presentend are not usefull later
+
+#### Simple game with 2 players and $n$ options (professional version, aka 'The Secretary Problem'):
+- Player A writes $n$ different numbers ($Z_1, ..., Z_n$) in $n$ notes. The notes are shuffled
+- Note 1 is uncovered and Player B decides whether or not to take Note 1
+- If not, Note 2 is uncovered and Player B decides whether or not to take Note 2, etc
+- If not, Note $n-1$ is uncovered and Player B decides whether or not to take Note $n-1$
+- If not, Player B gets Note $n$
+- Player A gets remaining notes
+- **Winner** is the player who has the note with the largest number
+- This game is usually illustrated as: An office manager is urgently looking for **one** new secretary. There are **n candidates** outside, waiting to be interviewed for this job. The office manager is in such a hurry that she does not actually intend to interview all *n* applicants. Hence, she starts briefly interviwing one candidate after another (in random order) and decides immediatly after each interview for or against that candidate.
+- The best strategy is to discard $m \in [0,n[$ notes and then pick the note with greater number than the previous ones, where $m = \arg\max{\sum_{k=m+1}^{n} \frac{1}{n} \frac{m}{k-1}}$, $\frac{1}{n}$ is the probability that the *k-th* note has the largest value, and $\frac{m}{k-1}$ the probability that the first *m* (discarded) notes have greater values than the first *k-1* notes.
+- [Adapted proof:] Note that $\sum_{k=m+1}^{n} \frac{1}{n} \frac{m}{k-1} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{1}{k-1} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{n}{k-1} \frac{1}{n} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{1}{(k-1)/n} (\frac{k+1}{n} - \frac{k}{n})$. For $n \to \infty$, and writing $x$ as the limit of $\frac{m}{n}$ then $m \to \arg\max{ x \int_{x}^{1} \frac{1}{t} dt} = \arg\max{(- x \ln(x))}$ (by Riemann approximation). Taking the first derivative, $x = 1/e$ and $m = n/e \approx 0.3679 n$
+- Meaning that, for $n \to \infty$, we discard the first $m = n/e$ notes and then choose the first note with greater number. Chance of winning = $1/e$
+
+####  Same game as before but $n = 3$ (advanced version):
+- Strategy "always choose the first note" or "last note" then chance of winning = 1/3
+- Strategy $m=1$ maximizes chance of winning: "Discard $Z_1$. If $Z_2 > Z_1$ then choose $Z_2$, else choose $Z_3$" then chance of winning = 1/2
+  * If $Z_1$ largest, lose (1/3)
+  * If $Z_2$ largest, win (1/3)
+  * If $Z_3$ largest and $Z_1 > Z_2$, win (1/6)
+  * If $Z_3$ largest and $Z_2 > Z_1$, lose (1/6)
+
+#### Same game as before but $n = 2$ (simple version):
 - Strategy "always choose the first note" then chance of winning = 50%
 - Strategy "choose alternately the first and then the second note" then chance of winning = 50%
 - Strategy "If the $Z_1 > X$ then pick Note 1, otherwise choose Note 2" then chance of winning > 50%
@@ -65,28 +85,4 @@ Simple game with 2 players and 2 options (beginner's version):
   * Case 6: $Z_2 \le X < Z_1$, pick Note 1 & win
   * Chance of winning: Case 1 & 2, 50%; Case 3 & 4, 50%; Case 5 & 6, 100%; Overall > 50% (for any $X$)
 
-Simple game with 2 players and 3 options (advanced version):
-- Player A writes 3 different numbers ($Z_1$, $Z_2$ and $Z_3$) in 3 notes. The notes are shuffled
-- Note 1 is uncovered and Player B decides whether or not to take Note 1
-- If not, Note 2 is uncovered and Player B decides whether or not to take Note 2
-- If not, Player B gets Note 3
-- Player A gets remaining notes
-- **Winner** is the player who has the note with the largest number
-- Strategy "always choose the first note" or "last note" then chance of winning = 1/3
-- Strategy "Discard $Z_1$. If $Z_2 > Z_1$ then choose $Z_2$, else choose $Z_3$" then chance of winning = 1/2
-  * If $Z_1$ largest, lose (1/3)
-  * If $Z_2$ largest, win (1/3)
-  * If $Z_3$ largest and $Z_1 > Z_2$, win (1/6)
-  * If $Z_3$ largest and $Z_2 > Z_1$, lose (1/6)
-
-Simple game with 2 players and $n$ options (professional version, aka 'The Secretary Problem'):
-- Player A writes $n$ different numbers ($Z_1, ..., Z_n$) in $n$ notes. The notes are shuffled
-- Note 1 is uncovered and Player B decides whether or not to take Note 1
-- If not, Note 2 is uncovered and Player B decides whether or not to take Note 2, etc
-- If not, Note $n-1$ is uncovered and Player B decides whether or not to take Note $n-1$
-- If not, Player B gets Note $n$
-- Player A gets remaining notes
-- **Winner** is the player who has the note with the largest number
-
-
-
+### 2.5. How Do You Trade Options? Trading Through a Bank
