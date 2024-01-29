@@ -61,8 +61,12 @@ The book is kind of informal, so notes will be just listed as bullets
 - Player A gets remaining notes
 - **Winner** is the player who has the note with the largest number
 - This game is usually illustrated as: An office manager is urgently looking for **one** new secretary. There are **n candidates** outside, waiting to be interviewed for this job. The office manager is in such a hurry that she does not actually intend to interview all *n* applicants. Hence, she starts briefly interviwing one candidate after another (in random order) and decides immediatly after each interview for or against that candidate.
-- The best strategy is to discard $m \in [0,n[$ notes and then pick the note with greater number than the previous ones, where $m = \arg\max{\sum_{k=m+1}^{n} \frac{1}{n} \frac{m}{k-1}}$, $\frac{1}{n}$ is the probability that the *k-th* note has the largest value, and $\frac{m}{k-1}$ the probability that the first *m* (discarded) notes have greater values than the first *k-1* notes.
-- [Adapted proof:] Note that $\sum_{k=m+1}^{n} \frac{1}{n} \frac{m}{k-1} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{1}{k-1} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{n}{k-1} \frac{1}{n} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{1}{(k-1)/n} (\frac{k+1}{n} - \frac{k}{n})$. For $n \to \infty$, and writing $x$ as the limit of $\frac{m}{n}$ then $m \to \arg\max{ x \int_{x}^{1} \frac{1}{t} dt} = \arg\max{(- x \ln(x))}$ (by Riemann approximation). Taking the first derivative, $x = 1/e$ and $m = n/e \approx 0.3679 n$
+- The best strategy is to discard $m \in [0,n[$ notes and then pick the note with greater number than the previous ones, where
+$$m = \arg\max{\sum_{k=m+1}^{n} \frac{1}{n} \frac{m}{k-1}} ,$$
+$\frac{1}{n}$ is the probability that the *k-th* note has the largest value, and $\frac{m}{k-1}$ the probability that the first *m* (discarded) notes have greater values than the first *k-1* notes.
+- [Adapted proof:] Note that
+$$\sum_{k=m+1}^{n} \frac{1}{n} \frac{m}{k-1} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{1}{k-1} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{n}{k-1} \frac{1}{n} = \frac{m}{n} \sum_{k=m+1}^{n} \frac{1}{(k-1)/n} (\frac{k+1}{n} - \frac{k}{n}) .$$
+For $n \to \infty$, and writing $x$ as the limit of $\frac{m}{n}$ then $m \to \arg\max{ x \int_{x}^{1} \frac{1}{t} dt} = \arg\max{(- x \ln(x))}$ (by Riemann approximation). Taking the first derivative, $x = 1/e$ and $m = n/e \approx 0.3679 n$
 - Meaning that, for $n \to \infty$, we discard the first $m = n/e$ notes and then choose the first note with greater number. Chance of winning = $1/e$
 
 ####  Same game as before but $n = 3$ (advanced version):
@@ -86,3 +90,28 @@ The book is kind of informal, so notes will be just listed as bullets
   * Chance of winning: Case 1 & 2, 50%; Case 3 & 4, 50%; Case 5 & 6, 100%; Overall > 50% (for any $X$)
 
 ### 2.5. How Do You Trade Options? Trading Through a Bank
+- Author focus on options on the S&P 500 index traded in options exchanges
+- Prices of options on exchanges (which can be long or short positions) are created through supply and demand
+- Trades can be executed by orders to a broker, or placed directly via an electronic platform
+- When you trade through a broker:
+  * You open a securities account
+  * You state that you have experience trading derivatives
+  * place orders with the broker at that bank
+- Make sure you work with a bank whose tranding desk (brokerage service hours) is open during the hours your target market operates
+- Realiable real-time market data can be cost-intensive (Bloomberg, Reuters). Your broker can provide specific real-time information upon request. A free (not always complete) source is [BigChart](https://bigcharts.marketwatch.com/quickchart/options.asp?sid=3377&symb=SPX)
+- Consider a put option on the S&P500 with expiration date 18 october 2019, strike price 2950 and bid / ask prices = 39.10 / 40.20
+  * Bid price of 39.10 means that we could currently go short (take a short position) on this option at a guaranteed price of 39.10
+  * Ask price of 40.20 means that we could currently go long (take a long position) on this option at a guaranteed price of 40.20
+  * In author's experience, the trade can occur close to midpoint (39.65). Order to sell (short) highly likely to occur at price 39.50. Order to buy (long), highly likely to occur at price 39.80.
+  * The limit order would look like: *Sell to open a put contract on SPX, expiration October 2019, strike 2950, limit 39.50 dollars*, and *Buy to open a put contract on SPX, expiration Octobre 2019, strike 2950, limit 39.80 dollars*
+- [Added notes:] You can **buy** or **sell** options, which can be **to open** or **to close**. These can be **market** orders, **limit** orders, and **stop** orders
+  * Buy-to-Open (BTO): Long position on a new option
+  * Sell-to-Open (STO): Short position on a new option
+  * Buy-to-Close (BTC): Long position on an existing option (to close a short position)
+  * Sell-to-Close (STC): Short position on an existing option (to close a long position)
+  * Market order: buy/sell at the market's current best available price (ensure execution)
+  * Limit order: buy/sell with a restriction on the maximum/minimum price to paid/receive
+  * Stop order: buy/sell when the price reaches a pre-set price above/below the current market price
+- S&P500 options cannot be purchased or sold piecewise, but only in the form of contracts, which covers 100 units of the options
+
+### 2.6. How Do You Trade Options? Trading Through an Electronic Trading Platform
